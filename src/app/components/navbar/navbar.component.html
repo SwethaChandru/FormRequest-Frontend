@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <ul >
+        <li>
+            <a *ngIf="!userIsAuth" mat-button routerLink="/login" routerLinkActive="mat-accent">LOGIN</a>
+        </li>
+        <li>
+            <a *ngIf="!userIsAuth" mat-button routerLink="/signup" routerLinkActive="mat-accent">SIGNUP</a>
+        </li>
+        <li>
+            <a *ngIf="userIsAuth" mat-button routerLink="/form" routerLinkActive="mat-accent">FORM</a>
+        </li>
+        <li>
+            <a *ngIf="userIsAuth" mat-button (click)="reject()" routerLinkActive="mat-accent">REJECTED</a>
+        </li>
+        <li>
+            <a *ngIf="userIsAuth" mat-button (click)="approve()"  routerLinkActive="mat-accent">APPROVED</a>
+        </li>
+        <li>
+            <a *ngIf="userIsAuth" mat-button   (click)="req()" routerLinkActive="mat-accent">REQUEST(for approval)</a>
+        </li>
+        <li>
+            <a *ngIf="userIsAuth" mat-button (click)="noti()" routerLinkActive="mat-accent">NOTIFICATIONS</a>
+        </li>
+        <li >
+            <button *ngIf="userIsAuth" mat-raised-button color='accent' (click)="logout()" type="submit">LOGOUT</button> 
+        </li>
+    </ul>
+</mat-toolbar>
+

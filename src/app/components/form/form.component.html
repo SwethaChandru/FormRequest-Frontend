@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<mat-card>
+    <form [formGroup]="form"(submit)="onForm()">
+
+        <div>
+            <mat-label>From:</mat-label>
+            {{from}}
+        </div>
+
+        <!-- <mat-form-field>
+            <input matInput="email"  type="email" formControlName="toemail"  placeholder="To E-mail">
+            <mat-error *ngIf="form.get('toemail').invalid">Please enter valid input</mat-error>
+        </mat-form-field> -->
+
+        <mat-form-field>
+            <mat-label>Select department</mat-label>
+            <mat-select formControlName="dept" (selectionChange)="store($event)" >
+              <mat-option *ngFor="let dept of departmentList" [value]="dept.deptName"  >
+                {{dept.deptName}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('dept').invalid">
+              Select department
+           </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Select user</mat-label>
+            <mat-select formControlName="user"  >
+              <mat-option *ngFor="let user of userlist" [value]="user.email"  >
+                {{user.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('user').invalid">
+              please Select user
+           </mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+            <mat-label>message</mat-label>
+            <textarea matInput formControlName="message"></textarea>
+            <mat-error *ngIf="form.get('message').invalid">Please enter valid input</mat-error>
+
+        </mat-form-field>
+
+        <button mat-raised-button color='accent' type="submit">send</button>
+
+    </form>
+</mat-card>

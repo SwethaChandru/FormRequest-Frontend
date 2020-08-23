@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<mat-card *ngFor="let msg of Usermessage">
+    <mat-card-title *ngIf="requeststatus">Message for approval </mat-card-title>
+    <mat-card-title *ngIf="approvestatus">Approved message</mat-card-title>
+    <mat-card-title *ngIf="rejectstatus">Rejected message</mat-card-title>
+    <mat-card-content>
+        <br/>
+        <p *ngIf="rejectstatus">FROM: {{msg.requests.toEmail}}</p>
+        <p>MESSAGE:{{msg.requests.content}}</p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="msg._id == id && requeststatus">
+        <button mat-raised-button color='accent' type="submit"(click)="reject(msg.requests._id,msg.requests.fromEmail)" >reject</button>
+        <button mat-raised-button color='accent' type="submit" (click)="approve(msg.requests._id,msg.requests.fromEmail)" >approve</button>
+    </mat-card-actions>
+</mat-card>
+
+
+<div  *ngIf="Usermessage.length ===0 && !notiflag" class="alert alert-danger" role="alert" >
+    No request found!!
+</div>
+
+<div class="container" *ngIf="notiflag">
+    <mat-card  *ngFor="let noti of notiMessage">
+        <mat-card-title style="font-size: small;">
+           {{noti.status}} message from:{{noti.requests.name}} </mat-card-title>
+        <mat-card-content>
+            <p></p>
+           <strong>MESSAGE:</strong>     {{noti.content}} 
+        </mat-card-content>
+    </mat-card>
+</div>
+

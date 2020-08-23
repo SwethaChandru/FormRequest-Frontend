@@ -1,0 +1,19 @@
+mat-card
+{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.container{
+    width: 900px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+div
+{
+    text-align: center;
+    width: 700px;
+    height: 50px;
+    margin-top: 150px;
+    margin-left: 250px;
+}
